@@ -11,26 +11,17 @@ namespace WA_BG
 {
     public partial class MainForm : Form
     {
-        private const string ProcessName = "WoW";
-
         private Process m_WoW;
 
         private SimpleAutomator m_automator;
 
         // -----------------------------------
 
-        public MainForm()
+        public MainForm(Process targetProcess)
         {
             InitializeComponent();
 
-            Process[] processes = Process.GetProcessesByName(ProcessName);
-            if (processes.Length == 0)
-            {
-                MessageBox.Show("Загрузите WoW");
-                return;
-            }
-
-            m_WoW = processes[0];
+            m_WoW = targetProcess;
 
             m_automator = new SimpleAutomator(
                 m_WoW,
@@ -57,11 +48,10 @@ namespace WA_BG
 
             ShortcutItem[] shortcuts = GetShortcuts();
 
-            m_automator.UseAlternateKeys = uiAlternativeKeys.Checked;
             m_automator.Shortcuts = shortcuts;
             m_automator.Start();
 
-            uiRunButton.Enabled = uiAlternativeKeys.Enabled = uiAddShortcutButton.Enabled = uiRemoveShortcutButton.Enabled = uiShortcuts.Enabled = false;
+            uiRunButton.Enabled = uiAddShortcutButton.Enabled = uiRemoveShortcutButton.Enabled = uiShortcuts.Enabled = false;
             uiStopButton.Enabled = true;
         }
 
@@ -69,7 +59,7 @@ namespace WA_BG
         {
             m_automator.Stop();
 
-            uiRunButton.Enabled = uiAlternativeKeys.Enabled = uiAddShortcutButton.Enabled = uiRemoveShortcutButton.Enabled = uiShortcuts.Enabled = true;
+            uiRunButton.Enabled = uiAddShortcutButton.Enabled = uiRemoveShortcutButton.Enabled = uiShortcuts.Enabled = true;
             uiStopButton.Enabled = false;
         }
 
@@ -82,7 +72,8 @@ namespace WA_BG
                 {
                     Shortcut = shortcutForm.Shortcut,
                     Timeout = shortcutForm.Timeout,
-                    TimeLeft = 0
+                    TimeLeft = 0,
+                    Comment = shortcutForm.Comment
                 });
             }
         }
@@ -112,16 +103,19 @@ namespace WA_BG
             ShortcutItem si = (ShortcutItem)uiShortcuts.SelectedItems[0].Tag;
             shortcutForm.Shortcut = si.Shortcut;
             shortcutForm.Timeout = si.Timeout;
+            shortcutForm.Comment = si.Comment;
 
             if (shortcutForm.ShowDialog() == DialogResult.OK)
             {
                 si.Shortcut = shortcutForm.Shortcut;
                 si.Timeout = shortcutForm.Timeout;
                 si.TimeLeft = 0;
+                si.Comment = shortcutForm.Comment;
 
                 uiShortcuts.SelectedItems[0].Tag = si;
                 uiShortcuts.SelectedItems[0].SubItems[0].Text = si.ShortcutText;
                 uiShortcuts.SelectedItems[0].SubItems[1].Text = si.Timeout.ToString();
+                uiShortcuts.SelectedItems[0].SubItems[2].Text = si.Comment;
             }
 
             uiShortcuts.SelectedItems.Clear();
@@ -170,7 +164,7 @@ namespace WA_BG
 
         private void AddShortcut(ShortcutItem si)
         {
-            uiShortcuts.Items.Add(new ListViewItem(new string[] { si.ShortcutText, si.Timeout.ToString() })
+            uiShortcuts.Items.Add(new ListViewItem(new string[] { si.ShortcutText, si.Timeout.ToString(), si.Comment })
             {
                 Tag = si
             });
@@ -192,6 +186,11 @@ namespace WA_BG
         {
             uiEditShortcutButton.Enabled = (uiShortcuts.SelectedItems.Count == 1);
             uiRemoveShortcutButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            SaveShortcuts();
         }
     }
 }

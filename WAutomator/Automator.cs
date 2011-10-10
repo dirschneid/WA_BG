@@ -47,7 +47,6 @@ namespace WAutomator
         private DispatcherTimer m_timer = new DispatcherTimer();
         private Random m_rand = new Random(DateTime.Now.Millisecond);
         private Action<string> m_logAction;
-        private Action m_tickAction;
 
         // -----------------------------------
 
@@ -67,7 +66,7 @@ namespace WAutomator
 
         // -----------------------------------
 
-        protected Automator(Process controlledProcess, Action<string> logAction = null, Action tickAction = null)
+        protected Automator(Process controlledProcess, Action<string> logAction = null)
         {
             m_controlledProcess = controlledProcess;
 
@@ -75,16 +74,15 @@ namespace WAutomator
             m_timer.Tick += new EventHandler(TickHandler);
 
             m_logAction = logAction;
-            m_tickAction = tickAction;
         }
 
-        public void Start()
+        public virtual void Start()
         {
             if (!IsEnabled)
                 m_timer.Start();
         }
 
-        public void Stop()
+        public virtual void Stop()
         {
             if (IsEnabled)
                 m_timer.Stop();
@@ -94,12 +92,6 @@ namespace WAutomator
         {
             if (null != m_logAction)
                 m_logAction(message);
-        }
-
-        protected void FireTickAction()
-        {
-            if (null != m_tickAction)
-                m_tickAction();
         }
 
         // -----------------------------------

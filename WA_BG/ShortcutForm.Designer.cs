@@ -36,9 +36,12 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.uiTimeout = new System.Windows.Forms.NumericUpDown();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.uiComment = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiTimeout)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiKey
@@ -82,7 +85,7 @@
             // buttonOk
             // 
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(240, 132);
+            this.buttonOk.Location = new System.Drawing.Point(240, 190);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 10;
@@ -95,7 +98,7 @@
             this.groupBox1.Controls.Add(this.uiModifierAlt);
             this.groupBox1.Controls.Add(this.uiModifierShift);
             this.groupBox1.Controls.Add(this.uiModifierCtrl);
-            this.groupBox1.Location = new System.Drawing.Point(12, 12);
+            this.groupBox1.Location = new System.Drawing.Point(12, 70);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(303, 55);
             this.groupBox1.TabIndex = 11;
@@ -105,7 +108,7 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.uiTimeout);
-            this.groupBox2.Location = new System.Drawing.Point(12, 73);
+            this.groupBox2.Location = new System.Drawing.Point(12, 131);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(303, 53);
             this.groupBox2.TabIndex = 12;
@@ -134,11 +137,29 @@
             0,
             0});
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.uiComment);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(303, 52);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Comment";
+            // 
+            // uiComment
+            // 
+            this.uiComment.Location = new System.Drawing.Point(10, 19);
+            this.uiComment.Name = "uiComment";
+            this.uiComment.Size = new System.Drawing.Size(283, 20);
+            this.uiComment.TabIndex = 0;
+            // 
             // ShortcutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 164);
+            this.ClientSize = new System.Drawing.Size(329, 227);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -151,6 +172,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.uiTimeout)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -165,5 +188,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.NumericUpDown uiTimeout;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox uiComment;
     }
 }

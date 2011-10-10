@@ -14,6 +14,7 @@ namespace WA_BG
         public Keys Key;
         public int Timeout;
         public int TimeLeft;
+        public string Comment;
 
         public string ShortcutText { get { return ColorAndKeyPair.FormatKey(Shortcut); } }
     }

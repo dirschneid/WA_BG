@@ -29,6 +29,12 @@ namespace WA_BG
             set { uiTimeout.Value = value; }
         }
 
+        public string Comment
+        {
+            get { return uiComment.Text; }
+            set { uiComment.Text = value; }
+        }
+
         public ShortcutForm()
         {
             InitializeComponent();
