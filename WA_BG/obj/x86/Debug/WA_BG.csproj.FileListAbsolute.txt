@@ -1,0 +1,12 @@
+s:\WA_BG\WA_BG\obj\x86\Debug\ResolveAssemblyReference.cache
+s:\WA_BG\WA_BG\obj\x86\Debug\WA_BG.Properties.Resources.resources
+s:\WA_BG\WA_BG\obj\x86\Debug\GenerateResource.read.1.tlog
+s:\WA_BG\WA_BG\obj\x86\Debug\GenerateResource.write.1.tlog
+s:\WA_BG\WA_BG\bin\Debug\WA_BG.exe
+s:\WA_BG\WA_BG\bin\Debug\WA_BG.pdb
+s:\WA_BG\WA_BG\obj\x86\Debug\WA_BG.exe
+s:\WA_BG\WA_BG\obj\x86\Debug\WA_BG.pdb
+s:\WA_BG\WA_BG\bin\Debug\WAutomator.dll
+s:\WA_BG\WA_BG\bin\Debug\WAutomator.pdb
+s:\WA_BG\WA_BG\obj\x86\Debug\WA_BG.MainForm.resources
+s:\WA_BG\WA_BG\obj\x86\Debug\WA_BG.ShortcutForm.resources

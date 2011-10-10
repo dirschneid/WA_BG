@@ -1,0 +1,70 @@
+﻿<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/
+..\FrameXML\UI.xsd">
+
+	<Script file="WA.lua" />
+	<Frame name="WAMainFrame" enableMouse="false" parent="UIParent" frameStrata="TOOLTIP" toplevel="true">
+		<Size>
+			<AbsDimension x="48" y="48"/>
+		</Size>
+		<Anchors>
+			<Anchor point = "CENTER"/>
+		</Anchors>
+		<Layers>
+			<Layer level="ARTWORK">
+				<Texture name="LeftSquare">
+				  <Size>
+				    <AbsDimension x="20" y="20" />
+				  </Size>
+				  <Anchors>
+				    <Anchor point="BOTTOMLEFT" relativePoint="BOTTOMLEFT" relativeTo="UIParent" />
+				  </Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="RightSquare">
+				  <Size>
+				    <AbsDimension x="20" y="20" />
+				  </Size>
+				  <Anchors>
+				    <Anchor point="BOTTOMRIGHT" relativePoint="BOTTOMRIGHT" relativeTo="UIParent" />
+				  </Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="LeftSquare2">
+				  <Size>
+				    <AbsDimension x="20" y="20" />
+				  </Size>
+				  <Anchors>
+				    <Anchor point="TOPLEFT" relativePoint="TOPLEFT" relativeTo="UIParent" />
+				  </Anchors>
+				</Texture>
+			</Layer>
+			<Layer level="ARTWORK">
+				<Texture name="RightSquare2">
+				  <Size>
+				    <AbsDimension x="20" y="20" />
+				  </Size>
+				  <Anchors>
+				    <Anchor point="TOPRIGHT" relativePoint="TOPRIGHT" relativeTo="UIParent" />
+				  </Anchors>
+				</Texture>
+			</Layer>
+		</Layers>
+		<TitleRegion setAllPoints="true"/>
+	</Frame>
+
+	<Frame name="WAFrame" parent="UIParent">
+		<Scripts>
+			<OnLoad>
+				WA_OnLoad(self);
+			</OnLoad>
+        <OnEvent>
+				WA_OnEvent(self,event,...);
+        </OnEvent>
+			<OnUpdate>
+				WA_OnUpdate(arg1);
+	 		</OnUpdate>
+		</Scripts>
+	</Frame>
+</Ui>

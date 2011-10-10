@@ -1,0 +1,9 @@
+﻿## Interface: 40000
+## Title: WA 7.4
+## Notes: CgqrjNEJfc
+## Version: 7.4
+## OptionalDeps:
+## Dependencies:
+## SavedVariables: _autojoin, _forcejoin, _autosignup, _autorelease, _autoleave, _tell, chatChannel, _sound, _soundonhighlight, _soundonemote, _screenshot, CKylqTuCxB, eTRAhmqsVzyokKN, QXcHLxfvnJC,cvar_autoLootDefault, cvar_autoSelfCast
+Localization.lua
+WA.xml
