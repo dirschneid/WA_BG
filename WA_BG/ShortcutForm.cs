@@ -35,6 +35,43 @@ namespace WA_BG
             set { uiComment.Text = value; }
         }
 
+        public bool CheckColor
+        {
+            get { return uiCheckColor.Checked; }
+            set { uiCheckColor.Checked = value; }
+        }
+
+        public decimal CoordX
+        {
+            get { return uiCoordX.Value; }
+            set { uiCoordX.Value = value; }
+        }
+
+        public decimal CoordY
+        {
+            get { return uiCoordY.Value; }
+            set { uiCoordY.Value = value; }
+        }
+
+        public decimal ColorR
+        {
+            get { return uiColorR.Value; }
+            set { uiColorR.Value = value; }
+        }
+
+        public decimal ColorG
+        {
+            get { return uiColorG.Value; }
+            set { uiColorG.Value = value; }
+        }
+
+        public decimal ColorB
+        {
+            get { return uiColorB.Value; }
+            set { uiColorB.Value = value; }
+        }
+
+       
         public ShortcutForm()
         {
             InitializeComponent();
@@ -55,6 +92,12 @@ namespace WA_BG
             m_shortcut = e;
 
             e.SuppressKeyPress = true;
+        }
+
+        private void uiCheckColor_CheckedChanged(object sender, EventArgs e)
+        {
+            uiCoordX.Enabled = uiCoordY.Enabled =
+                uiColorR.Enabled = uiColorG.Enabled = uiColorB.Enabled = uiCheckColor.Checked;
         }
     }
 }

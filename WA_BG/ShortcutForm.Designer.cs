@@ -38,10 +38,28 @@
             this.uiTimeout = new System.Windows.Forms.NumericUpDown();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.uiComment = new System.Windows.Forms.TextBox();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.uiCheckColor = new System.Windows.Forms.CheckBox();
+            this.uiCoordX = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
+            this.uiCoordY = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.uiColorR = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            this.uiColorG = new System.Windows.Forms.NumericUpDown();
+            this.label4 = new System.Windows.Forms.Label();
+            this.uiColorB = new System.Windows.Forms.NumericUpDown();
+            this.label5 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiTimeout)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCoordX)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCoordY)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorB)).BeginInit();
             this.SuspendLayout();
             // 
             // uiKey
@@ -84,8 +102,9 @@
             // 
             // buttonOk
             // 
+            this.buttonOk.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.buttonOk.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.buttonOk.Location = new System.Drawing.Point(240, 190);
+            this.buttonOk.Location = new System.Drawing.Point(242, 288);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
             this.buttonOk.TabIndex = 10;
@@ -155,11 +174,161 @@
             this.uiComment.Size = new System.Drawing.Size(283, 20);
             this.uiComment.TabIndex = 0;
             // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.label2);
+            this.groupBox4.Controls.Add(this.label5);
+            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.label3);
+            this.groupBox4.Controls.Add(this.label1);
+            this.groupBox4.Controls.Add(this.uiCoordY);
+            this.groupBox4.Controls.Add(this.uiColorB);
+            this.groupBox4.Controls.Add(this.uiColorG);
+            this.groupBox4.Controls.Add(this.uiColorR);
+            this.groupBox4.Controls.Add(this.uiCoordX);
+            this.groupBox4.Controls.Add(this.uiCheckColor);
+            this.groupBox4.Location = new System.Drawing.Point(12, 190);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(303, 90);
+            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Color";
+            // 
+            // uiCheckColor
+            // 
+            this.uiCheckColor.AutoSize = true;
+            this.uiCheckColor.Location = new System.Drawing.Point(10, 19);
+            this.uiCheckColor.Name = "uiCheckColor";
+            this.uiCheckColor.Size = new System.Drawing.Size(83, 17);
+            this.uiCheckColor.TabIndex = 0;
+            this.uiCheckColor.Text = "Check color";
+            this.uiCheckColor.UseVisualStyleBackColor = true;
+            this.uiCheckColor.CheckedChanged += new System.EventHandler(this.uiCheckColor_CheckedChanged);
+            // 
+            // uiCoordX
+            // 
+            this.uiCoordX.Enabled = false;
+            this.uiCoordX.Location = new System.Drawing.Point(134, 16);
+            this.uiCoordX.Name = "uiCoordX";
+            this.uiCoordX.Size = new System.Drawing.Size(65, 20);
+            this.uiCoordX.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(111, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(17, 13);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "X:";
+            // 
+            // uiCoordY
+            // 
+            this.uiCoordY.Enabled = false;
+            this.uiCoordY.Location = new System.Drawing.Point(228, 16);
+            this.uiCoordY.Name = "uiCoordY";
+            this.uiCoordY.Size = new System.Drawing.Size(65, 20);
+            this.uiCoordY.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(205, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Y:";
+            // 
+            // uiColorR
+            // 
+            this.uiColorR.DecimalPlaces = 3;
+            this.uiColorR.Enabled = false;
+            this.uiColorR.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.uiColorR.Location = new System.Drawing.Point(39, 58);
+            this.uiColorR.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiColorR.Name = "uiColorR";
+            this.uiColorR.Size = new System.Drawing.Size(65, 20);
+            this.uiColorR.TabIndex = 1;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "R:";
+            // 
+            // uiColorG
+            // 
+            this.uiColorG.DecimalPlaces = 3;
+            this.uiColorG.Enabled = false;
+            this.uiColorG.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.uiColorG.Location = new System.Drawing.Point(134, 58);
+            this.uiColorG.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiColorG.Name = "uiColorG";
+            this.uiColorG.Size = new System.Drawing.Size(65, 20);
+            this.uiColorG.TabIndex = 1;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(111, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "G:";
+            // 
+            // uiColorB
+            // 
+            this.uiColorB.DecimalPlaces = 3;
+            this.uiColorB.Enabled = false;
+            this.uiColorB.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.uiColorB.Location = new System.Drawing.Point(228, 58);
+            this.uiColorB.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiColorB.Name = "uiColorB";
+            this.uiColorB.Size = new System.Drawing.Size(65, 20);
+            this.uiColorB.TabIndex = 1;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(205, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "B:";
+            // 
             // ShortcutForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(329, 227);
+            this.ClientSize = new System.Drawing.Size(329, 323);
+            this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.buttonOk);
             this.Controls.Add(this.groupBox2);
@@ -175,6 +344,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.uiTimeout)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCoordX)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCoordY)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorB)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -191,5 +367,17 @@
         private System.Windows.Forms.NumericUpDown uiTimeout;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox uiComment;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.NumericUpDown uiCoordY;
+        private System.Windows.Forms.NumericUpDown uiColorB;
+        private System.Windows.Forms.NumericUpDown uiColorG;
+        private System.Windows.Forms.NumericUpDown uiColorR;
+        private System.Windows.Forms.NumericUpDown uiCoordX;
+        private System.Windows.Forms.CheckBox uiCheckColor;
     }
 }
