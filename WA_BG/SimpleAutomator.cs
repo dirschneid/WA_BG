@@ -26,23 +26,30 @@ namespace WA_BG
         {
             m_queue.Clear();
 
+            for (int i = 0; i < Shortcuts.Length; i++)
+            {
+                Shortcuts[i].ResetTimeout();
+            }
+
             base.Start();
         }
 
         protected override void TickHandler(object source, EventArgs args)
         {
-            Stopwatch stopwatch = new Stopwatch();
-            stopwatch.Start();
+            // Вычиляемое значение, запоминаем его один раз в самом начале
+            double currentKeypressTimeout = MasterTickOffset;
+            double tickDelta = currentKeypressTimeout / 1000;
 
             DateTime now = DateTime.Now;
             FireLogAction("Timestamp: " + now.Minute + ":" + now.Second + "." + now.Millisecond);
 
             for (int i = 0; i < Shortcuts.Length; ++i)
             {
-                // Если данный жлемент не в очереди, его следует обработать
+                // Если данный элемент не в очереди, его следует обработать
                 if (!m_queue.Contains(i))
                 {
-                    if (--Shortcuts[i].TimeLeft <= 0)
+                    Shortcuts[i].TimeLeft -= tickDelta;
+                    if (Shortcuts[i].TimeLeft <= 0)
                     {
                         // Подошло время, засунем в очередь на нажатие
                         m_queue.Enqueue(i);
@@ -56,15 +63,13 @@ namespace WA_BG
                 int index = m_queue.Dequeue();
 
                 FireLogAction("    Key = " + Shortcuts[index].ShortcutText + " (" + Shortcuts[index].Comment + ")");
-                Shortcuts[index].TimeLeft = Shortcuts[index].Timeout;
+                Shortcuts[index].ResetTimeout();
 
                 SendKey(Shortcuts[index].Key);
             }
 
-            stopwatch.Stop();
-
             // Задержка до следующего вызова (учитываем время, потраченное на обработку)
-            Timer.Interval = TimeSpan.FromMilliseconds(500);
+            Timer.Interval = TimeSpan.FromMilliseconds(currentKeypressTimeout);
         }
     }
 }

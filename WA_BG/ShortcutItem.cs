@@ -12,10 +12,20 @@ namespace WA_BG
     {
         public KeyEventArgs Shortcut { get { return new KeyEventArgs(Key); } set { Key = value.KeyData; } }
         public Keys Key;
-        public int Timeout;
-        public int TimeLeft;
+        /// <summary>
+        /// Интервал между нажатиями (в секундах).
+        /// </summary>
+        public double Timeout;
+        /// <summary>
+        /// Время, оставшееся до нажатия (в миллисекундах).
+        /// </summary>
+        public double TimeLeft;
         public string Comment;
 
         public string ShortcutText { get { return ColorAndKeyPair.FormatKey(Shortcut); } }
+        public void ResetTimeout()
+        {
+            TimeLeft = Timeout;
+        }
     }
 }

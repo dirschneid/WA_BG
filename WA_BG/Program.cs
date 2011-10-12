@@ -14,7 +14,7 @@ namespace WA_BG
         [STAThread]
         static void Main()
         {
-            const string ProcessName = "WoW";
+            const string ProcessName = "cmd";//"WoW";
 
             Process[] processes = Process.GetProcessesByName(ProcessName);
             if (processes.Length == 0)

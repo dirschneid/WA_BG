@@ -23,10 +23,10 @@ namespace WA_BG
             }
         }
 
-        public int Timeout
+        public double Timeout
         {
-            get { return Convert.ToInt32(uiTimeout.Value); }
-            set { uiTimeout.Value = value; }
+            get { return Convert.ToDouble(uiTimeout.Value); }
+            set { uiTimeout.Value = Convert.ToDecimal(value); }
         }
 
         public string Comment

@@ -46,12 +46,16 @@ namespace WA_BG
 
             //Automator.SendMouseLButtonClick(Cursor.Position.X, Cursor.Position.Y, m_WoW.MainWindowHandle);
 
-            ShortcutItem[] shortcuts = GetShortcuts();
-
-            m_automator.Shortcuts = shortcuts;
+            m_automator.Shortcuts = GetShortcuts();
             m_automator.Start();
 
-            uiRunButton.Enabled = uiAddShortcutButton.Enabled = uiRemoveShortcutButton.Enabled = uiShortcuts.Enabled = false;
+            uiRunButton.Enabled =
+                uiAddShortcutButton.Enabled =
+                uiRemoveShortcutButton.Enabled =
+                uiShortcuts.Enabled =
+                uiLoadButton.Enabled =
+                uiSaveButton.Enabled = false;
+
             uiStopButton.Enabled = true;
         }
 
@@ -59,7 +63,13 @@ namespace WA_BG
         {
             m_automator.Stop();
 
-            uiRunButton.Enabled = uiAddShortcutButton.Enabled = uiRemoveShortcutButton.Enabled = uiShortcuts.Enabled = true;
+            uiRunButton.Enabled = 
+                uiAddShortcutButton.Enabled = 
+                uiRemoveShortcutButton.Enabled = 
+                uiShortcuts.Enabled =
+                uiLoadButton.Enabled =
+                uiSaveButton.Enabled = true;
+
             uiStopButton.Enabled = false;
         }
 
@@ -72,7 +82,7 @@ namespace WA_BG
                 {
                     Shortcut = shortcutForm.Shortcut,
                     Timeout = shortcutForm.Timeout,
-                    TimeLeft = 0,
+                    TimeLeft = shortcutForm.Timeout,
                     Comment = shortcutForm.Comment
                 });
             }
@@ -109,8 +119,8 @@ namespace WA_BG
             {
                 si.Shortcut = shortcutForm.Shortcut;
                 si.Timeout = shortcutForm.Timeout;
-                si.TimeLeft = 0;
                 si.Comment = shortcutForm.Comment;
+                si.ResetTimeout();
 
                 uiShortcuts.SelectedItems[0].Tag = si;
                 uiShortcuts.SelectedItems[0].SubItems[0].Text = si.ShortcutText;

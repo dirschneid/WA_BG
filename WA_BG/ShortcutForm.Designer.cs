@@ -117,6 +117,7 @@
             // 
             // uiTimeout
             // 
+            this.uiTimeout.DecimalPlaces = 1;
             this.uiTimeout.Location = new System.Drawing.Point(10, 19);
             this.uiTimeout.Maximum = new decimal(new int[] {
             1200,
@@ -127,7 +128,7 @@
             1,
             0,
             0,
-            0});
+            65536});
             this.uiTimeout.Name = "uiTimeout";
             this.uiTimeout.Size = new System.Drawing.Size(283, 20);
             this.uiTimeout.TabIndex = 0;
