@@ -14,18 +14,9 @@ namespace WA_BG
         [STAThread]
         static void Main()
         {
-            const string ProcessName = "WoW";
-
-            Process[] processes = Process.GetProcessesByName(ProcessName);
-            if (processes.Length == 0)
-            {
-                MessageBox.Show("Загрузите " + ProcessName);
-                return;
-            }
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new MainForm(processes[0]));
+            Application.Run(new MainForm());
         }
     }
 }

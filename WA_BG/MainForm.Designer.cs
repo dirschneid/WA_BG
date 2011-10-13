@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.uiRunButton = new System.Windows.Forms.Button();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.uiStopButton = new System.Windows.Forms.Button();
             this.uiShortcuts = new System.Windows.Forms.ListView();
             this.columnHeaderShortcut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTimeout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderComment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -42,38 +44,45 @@
             this.uiSaveButton = new System.Windows.Forms.Button();
             this.uiLoadButton = new System.Windows.Forms.Button();
             this.uiEditShortcutButton = new System.Windows.Forms.Button();
+            this.uiOpenProfileDialog = new System.Windows.Forms.OpenFileDialog();
+            this.uiSaveProfileDialog = new System.Windows.Forms.SaveFileDialog();
+            this.uiSaveAsButton = new System.Windows.Forms.Button();
+            this.uiDuplicateButton = new System.Windows.Forms.Button();
+            this.uiCheckInterval = new System.Windows.Forms.NumericUpDown();
+            this.label3 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCheckInterval)).BeginInit();
             this.SuspendLayout();
             // 
             // uiRunButton
             // 
-            this.uiRunButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.uiRunButton.Location = new System.Drawing.Point(380, 553);
+            this.uiRunButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiRunButton.Location = new System.Drawing.Point(706, 582);
             this.uiRunButton.Name = "uiRunButton";
-            this.uiRunButton.Size = new System.Drawing.Size(75, 23);
+            this.uiRunButton.Size = new System.Drawing.Size(60, 23);
             this.uiRunButton.TabIndex = 0;
-            this.uiRunButton.Text = "Run";
+            this.uiRunButton.Text = "&Run";
             this.uiRunButton.UseVisualStyleBackColor = true;
             this.uiRunButton.Click += new System.EventHandler(this.btnRun_Click);
             // 
             // listBox1
             // 
-            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            this.listBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.listBox1.FormattingEnabled = true;
-            this.listBox1.Location = new System.Drawing.Point(12, 354);
+            this.listBox1.Location = new System.Drawing.Point(579, 25);
             this.listBox1.Name = "listBox1";
-            this.listBox1.Size = new System.Drawing.Size(362, 251);
+            this.listBox1.Size = new System.Drawing.Size(253, 550);
             this.listBox1.TabIndex = 1;
             // 
             // uiStopButton
             // 
             this.uiStopButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.uiStopButton.Enabled = false;
-            this.uiStopButton.Location = new System.Drawing.Point(380, 582);
+            this.uiStopButton.Location = new System.Drawing.Point(772, 581);
             this.uiStopButton.Name = "uiStopButton";
-            this.uiStopButton.Size = new System.Drawing.Size(75, 23);
+            this.uiStopButton.Size = new System.Drawing.Size(60, 23);
             this.uiStopButton.TabIndex = 2;
-            this.uiStopButton.Text = "Stop";
+            this.uiStopButton.Text = "&Stop";
             this.uiStopButton.UseVisualStyleBackColor = true;
             this.uiStopButton.Click += new System.EventHandler(this.btnStop_Click);
             // 
@@ -85,12 +94,13 @@
             this.uiShortcuts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderShortcut,
             this.columnHeaderTimeout,
+            this.columnHeaderColor,
             this.columnHeaderComment});
             this.uiShortcuts.FullRowSelect = true;
             this.uiShortcuts.GridLines = true;
             this.uiShortcuts.Location = new System.Drawing.Point(12, 25);
             this.uiShortcuts.Name = "uiShortcuts";
-            this.uiShortcuts.Size = new System.Drawing.Size(362, 310);
+            this.uiShortcuts.Size = new System.Drawing.Size(561, 551);
             this.uiShortcuts.TabIndex = 4;
             this.uiShortcuts.UseCompatibleStateImageBehavior = false;
             this.uiShortcuts.View = System.Windows.Forms.View.Details;
@@ -100,12 +110,18 @@
             // columnHeaderShortcut
             // 
             this.columnHeaderShortcut.Text = "Shortcut";
-            this.columnHeaderShortcut.Width = 120;
+            this.columnHeaderShortcut.Width = 110;
             // 
             // columnHeaderTimeout
             // 
             this.columnHeaderTimeout.Text = "Timeout";
-            this.columnHeaderTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.columnHeaderTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // columnHeaderColor
+            // 
+            this.columnHeaderColor.Text = "Color";
+            this.columnHeaderColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderColor.Width = 200;
             // 
             // columnHeaderComment
             // 
@@ -115,9 +131,9 @@
             // 
             // label1
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 338);
+            this.label1.Location = new System.Drawing.Point(576, 4);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(70, 13);
             this.label1.TabIndex = 5;
@@ -126,7 +142,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(9, 9);
+            this.label2.Location = new System.Drawing.Point(12, 4);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(55, 13);
             this.label2.TabIndex = 6;
@@ -134,32 +150,33 @@
             // 
             // uiRemoveShortcutButton
             // 
-            this.uiRemoveShortcutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiRemoveShortcutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.uiRemoveShortcutButton.Enabled = false;
-            this.uiRemoveShortcutButton.Location = new System.Drawing.Point(380, 54);
+            this.uiRemoveShortcutButton.Location = new System.Drawing.Point(78, 582);
             this.uiRemoveShortcutButton.Name = "uiRemoveShortcutButton";
-            this.uiRemoveShortcutButton.Size = new System.Drawing.Size(75, 23);
+            this.uiRemoveShortcutButton.Size = new System.Drawing.Size(60, 23);
             this.uiRemoveShortcutButton.TabIndex = 7;
-            this.uiRemoveShortcutButton.Text = "Remove";
+            this.uiRemoveShortcutButton.Text = "&Remove";
             this.uiRemoveShortcutButton.UseVisualStyleBackColor = true;
             this.uiRemoveShortcutButton.Click += new System.EventHandler(this.uiRemoveShortcutButton_Click);
             // 
             // uiAddShortcutButton
             // 
-            this.uiAddShortcutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiAddShortcutButton.Location = new System.Drawing.Point(380, 25);
+            this.uiAddShortcutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.uiAddShortcutButton.Location = new System.Drawing.Point(12, 582);
             this.uiAddShortcutButton.Name = "uiAddShortcutButton";
-            this.uiAddShortcutButton.Size = new System.Drawing.Size(75, 23);
+            this.uiAddShortcutButton.Size = new System.Drawing.Size(60, 23);
             this.uiAddShortcutButton.TabIndex = 8;
-            this.uiAddShortcutButton.Text = "Add";
+            this.uiAddShortcutButton.Text = "&Add";
             this.uiAddShortcutButton.UseVisualStyleBackColor = true;
             this.uiAddShortcutButton.Click += new System.EventHandler(this.uiAddShortcutButton_Click);
             // 
             // uiSaveButton
             // 
-            this.uiSaveButton.Location = new System.Drawing.Point(380, 312);
+            this.uiSaveButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiSaveButton.Location = new System.Drawing.Point(442, 582);
             this.uiSaveButton.Name = "uiSaveButton";
-            this.uiSaveButton.Size = new System.Drawing.Size(75, 23);
+            this.uiSaveButton.Size = new System.Drawing.Size(60, 23);
             this.uiSaveButton.TabIndex = 9;
             this.uiSaveButton.Text = "Save";
             this.uiSaveButton.UseVisualStyleBackColor = true;
@@ -167,9 +184,10 @@
             // 
             // uiLoadButton
             // 
-            this.uiLoadButton.Location = new System.Drawing.Point(380, 283);
+            this.uiLoadButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiLoadButton.Location = new System.Drawing.Point(376, 582);
             this.uiLoadButton.Name = "uiLoadButton";
-            this.uiLoadButton.Size = new System.Drawing.Size(75, 23);
+            this.uiLoadButton.Size = new System.Drawing.Size(60, 23);
             this.uiLoadButton.TabIndex = 10;
             this.uiLoadButton.Text = "Load";
             this.uiLoadButton.UseVisualStyleBackColor = true;
@@ -177,20 +195,96 @@
             // 
             // uiEditShortcutButton
             // 
+            this.uiEditShortcutButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.uiEditShortcutButton.Enabled = false;
-            this.uiEditShortcutButton.Location = new System.Drawing.Point(380, 83);
+            this.uiEditShortcutButton.Location = new System.Drawing.Point(144, 582);
             this.uiEditShortcutButton.Name = "uiEditShortcutButton";
-            this.uiEditShortcutButton.Size = new System.Drawing.Size(75, 23);
+            this.uiEditShortcutButton.Size = new System.Drawing.Size(60, 23);
             this.uiEditShortcutButton.TabIndex = 11;
-            this.uiEditShortcutButton.Text = "Edit";
+            this.uiEditShortcutButton.Text = "&Edit";
             this.uiEditShortcutButton.UseVisualStyleBackColor = true;
             this.uiEditShortcutButton.Click += new System.EventHandler(this.uiEditButton_Click);
+            // 
+            // uiOpenProfileDialog
+            // 
+            this.uiOpenProfileDialog.Filter = "WA BG Profile|*.profile";
+            this.uiOpenProfileDialog.Title = "Open profile";
+            // 
+            // uiSaveProfileDialog
+            // 
+            this.uiSaveProfileDialog.DefaultExt = "profile";
+            this.uiSaveProfileDialog.FileName = "Profile1";
+            this.uiSaveProfileDialog.Filter = "WA BG Profile|*.profile";
+            this.uiSaveProfileDialog.RestoreDirectory = true;
+            this.uiSaveProfileDialog.Title = "Save profile";
+            // 
+            // uiSaveAsButton
+            // 
+            this.uiSaveAsButton.Location = new System.Drawing.Point(508, 582);
+            this.uiSaveAsButton.Name = "uiSaveAsButton";
+            this.uiSaveAsButton.Size = new System.Drawing.Size(65, 23);
+            this.uiSaveAsButton.TabIndex = 12;
+            this.uiSaveAsButton.Text = "Save As...";
+            this.uiSaveAsButton.UseVisualStyleBackColor = true;
+            this.uiSaveAsButton.Click += new System.EventHandler(this.uiSaveAsButton_Click);
+            // 
+            // uiDuplicateButton
+            // 
+            this.uiDuplicateButton.Enabled = false;
+            this.uiDuplicateButton.Location = new System.Drawing.Point(210, 582);
+            this.uiDuplicateButton.Name = "uiDuplicateButton";
+            this.uiDuplicateButton.Size = new System.Drawing.Size(60, 23);
+            this.uiDuplicateButton.TabIndex = 13;
+            this.uiDuplicateButton.Text = "&Duplicate";
+            this.uiDuplicateButton.UseVisualStyleBackColor = true;
+            this.uiDuplicateButton.Click += new System.EventHandler(this.uiDuplicateButton_Click);
+            // 
+            // uiCheckInterval
+            // 
+            this.uiCheckInterval.DecimalPlaces = 1;
+            this.uiCheckInterval.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.uiCheckInterval.Location = new System.Drawing.Point(492, 2);
+            this.uiCheckInterval.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiCheckInterval.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            65536});
+            this.uiCheckInterval.Name = "uiCheckInterval";
+            this.uiCheckInterval.Size = new System.Drawing.Size(62, 20);
+            this.uiCheckInterval.TabIndex = 14;
+            this.uiCheckInterval.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            65536});
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(382, 4);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.TabIndex = 15;
+            this.label3.Text = "Check interval (sec):";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 612);
+            this.ClientSize = new System.Drawing.Size(844, 612);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.uiCheckInterval);
+            this.Controls.Add(this.uiDuplicateButton);
+            this.Controls.Add(this.uiSaveAsButton);
             this.Controls.Add(this.uiEditShortcutButton);
             this.Controls.Add(this.uiLoadButton);
             this.Controls.Add(this.uiSaveButton);
@@ -202,10 +296,12 @@
             this.Controls.Add(this.uiStopButton);
             this.Controls.Add(this.listBox1);
             this.Controls.Add(this.uiRunButton);
-            this.MinimumSize = new System.Drawing.Size(450, 650);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(860, 650);
             this.Name = "MainForm";
             this.Text = "WA - BG";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
+            ((System.ComponentModel.ISupportInitialize)(this.uiCheckInterval)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -227,6 +323,13 @@
         private System.Windows.Forms.Button uiLoadButton;
         private System.Windows.Forms.Button uiEditShortcutButton;
         private System.Windows.Forms.ColumnHeader columnHeaderComment;
+        private System.Windows.Forms.ColumnHeader columnHeaderColor;
+        private System.Windows.Forms.OpenFileDialog uiOpenProfileDialog;
+        private System.Windows.Forms.SaveFileDialog uiSaveProfileDialog;
+        private System.Windows.Forms.Button uiSaveAsButton;
+        private System.Windows.Forms.Button uiDuplicateButton;
+        private System.Windows.Forms.NumericUpDown uiCheckInterval;
+        private System.Windows.Forms.Label label3;
     }
 }
 

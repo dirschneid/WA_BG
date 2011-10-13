@@ -39,27 +39,27 @@
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.uiComment = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.uiCheckColor = new System.Windows.Forms.CheckBox();
-            this.uiCoordX = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.uiCoordY = new System.Windows.Forms.NumericUpDown();
-            this.label2 = new System.Windows.Forms.Label();
-            this.uiColorR = new System.Windows.Forms.NumericUpDown();
-            this.label3 = new System.Windows.Forms.Label();
-            this.uiColorG = new System.Windows.Forms.NumericUpDown();
-            this.label4 = new System.Windows.Forms.Label();
             this.uiColorB = new System.Windows.Forms.NumericUpDown();
-            this.label5 = new System.Windows.Forms.Label();
+            this.uiColorG = new System.Windows.Forms.NumericUpDown();
+            this.uiColorR = new System.Windows.Forms.NumericUpDown();
+            this.uiCoordX = new System.Windows.Forms.NumericUpDown();
+            this.uiCheckColor = new System.Windows.Forms.CheckBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.uiTimeout)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiCoordX)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiCoordY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiColorR)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiColorG)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiColorB)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorG)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorR)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCoordX)).BeginInit();
             this.SuspendLayout();
             // 
             // uiKey
@@ -73,6 +73,7 @@
             // uiModifierCtrl
             // 
             this.uiModifierCtrl.AutoSize = true;
+            this.uiModifierCtrl.Enabled = false;
             this.uiModifierCtrl.Location = new System.Drawing.Point(63, 23);
             this.uiModifierCtrl.Name = "uiModifierCtrl";
             this.uiModifierCtrl.Size = new System.Drawing.Size(41, 17);
@@ -83,6 +84,7 @@
             // uiModifierShift
             // 
             this.uiModifierShift.AutoSize = true;
+            this.uiModifierShift.Enabled = false;
             this.uiModifierShift.Location = new System.Drawing.Point(10, 23);
             this.uiModifierShift.Name = "uiModifierShift";
             this.uiModifierShift.Size = new System.Drawing.Size(47, 17);
@@ -93,6 +95,7 @@
             // uiModifierAlt
             // 
             this.uiModifierAlt.AutoSize = true;
+            this.uiModifierAlt.Enabled = false;
             this.uiModifierAlt.Location = new System.Drawing.Point(110, 23);
             this.uiModifierAlt.Name = "uiModifierAlt";
             this.uiModifierAlt.Size = new System.Drawing.Size(38, 17);
@@ -107,7 +110,7 @@
             this.buttonOk.Location = new System.Drawing.Point(242, 288);
             this.buttonOk.Name = "buttonOk";
             this.buttonOk.Size = new System.Drawing.Size(75, 23);
-            this.buttonOk.TabIndex = 10;
+            this.buttonOk.TabIndex = 0;
             this.buttonOk.Text = "Select";
             this.buttonOk.UseVisualStyleBackColor = true;
             // 
@@ -194,24 +197,41 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Color";
             // 
-            // uiCheckColor
+            // label2
             // 
-            this.uiCheckColor.AutoSize = true;
-            this.uiCheckColor.Location = new System.Drawing.Point(10, 19);
-            this.uiCheckColor.Name = "uiCheckColor";
-            this.uiCheckColor.Size = new System.Drawing.Size(83, 17);
-            this.uiCheckColor.TabIndex = 0;
-            this.uiCheckColor.Text = "Check color";
-            this.uiCheckColor.UseVisualStyleBackColor = true;
-            this.uiCheckColor.CheckedChanged += new System.EventHandler(this.uiCheckColor_CheckedChanged);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(205, 20);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(17, 13);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "Y:";
             // 
-            // uiCoordX
+            // label5
             // 
-            this.uiCoordX.Enabled = false;
-            this.uiCoordX.Location = new System.Drawing.Point(134, 16);
-            this.uiCoordX.Name = "uiCoordX";
-            this.uiCoordX.Size = new System.Drawing.Size(65, 20);
-            this.uiCoordX.TabIndex = 1;
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(205, 60);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(17, 13);
+            this.label5.TabIndex = 2;
+            this.label5.Text = "B:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(111, 62);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(18, 13);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "G:";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(15, 62);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "R:";
             // 
             // label1
             // 
@@ -226,74 +246,19 @@
             // 
             this.uiCoordY.Enabled = false;
             this.uiCoordY.Location = new System.Drawing.Point(228, 16);
+            this.uiCoordY.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
             this.uiCoordY.Name = "uiCoordY";
             this.uiCoordY.Size = new System.Drawing.Size(65, 20);
-            this.uiCoordY.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(205, 20);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(17, 13);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Y:";
-            // 
-            // uiColorR
-            // 
-            this.uiColorR.DecimalPlaces = 3;
-            this.uiColorR.Enabled = false;
-            this.uiColorR.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.uiColorR.Location = new System.Drawing.Point(39, 58);
-            this.uiColorR.Maximum = new decimal(new int[] {
+            this.uiCoordY.TabIndex = 2;
+            this.uiCoordY.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.uiColorR.Name = "uiColorR";
-            this.uiColorR.Size = new System.Drawing.Size(65, 20);
-            this.uiColorR.TabIndex = 1;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(15, 62);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "R:";
-            // 
-            // uiColorG
-            // 
-            this.uiColorG.DecimalPlaces = 3;
-            this.uiColorG.Enabled = false;
-            this.uiColorG.Increment = new decimal(new int[] {
-            1,
-            0,
-            0,
-            131072});
-            this.uiColorG.Location = new System.Drawing.Point(134, 58);
-            this.uiColorG.Maximum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.uiColorG.Name = "uiColorG";
-            this.uiColorG.Size = new System.Drawing.Size(65, 20);
-            this.uiColorG.TabIndex = 1;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(111, 62);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(18, 13);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "G:";
             // 
             // uiColorB
             // 
@@ -312,16 +277,74 @@
             0});
             this.uiColorB.Name = "uiColorB";
             this.uiColorB.Size = new System.Drawing.Size(65, 20);
-            this.uiColorB.TabIndex = 1;
+            this.uiColorB.TabIndex = 5;
             // 
-            // label5
+            // uiColorG
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(205, 60);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(17, 13);
-            this.label5.TabIndex = 2;
-            this.label5.Text = "B:";
+            this.uiColorG.DecimalPlaces = 3;
+            this.uiColorG.Enabled = false;
+            this.uiColorG.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.uiColorG.Location = new System.Drawing.Point(134, 58);
+            this.uiColorG.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiColorG.Name = "uiColorG";
+            this.uiColorG.Size = new System.Drawing.Size(65, 20);
+            this.uiColorG.TabIndex = 4;
+            // 
+            // uiColorR
+            // 
+            this.uiColorR.DecimalPlaces = 3;
+            this.uiColorR.Enabled = false;
+            this.uiColorR.Increment = new decimal(new int[] {
+            1,
+            0,
+            0,
+            131072});
+            this.uiColorR.Location = new System.Drawing.Point(39, 58);
+            this.uiColorR.Maximum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.uiColorR.Name = "uiColorR";
+            this.uiColorR.Size = new System.Drawing.Size(65, 20);
+            this.uiColorR.TabIndex = 3;
+            // 
+            // uiCoordX
+            // 
+            this.uiCoordX.Enabled = false;
+            this.uiCoordX.Location = new System.Drawing.Point(134, 16);
+            this.uiCoordX.Maximum = new decimal(new int[] {
+            5000,
+            0,
+            0,
+            0});
+            this.uiCoordX.Name = "uiCoordX";
+            this.uiCoordX.Size = new System.Drawing.Size(65, 20);
+            this.uiCoordX.TabIndex = 1;
+            this.uiCoordX.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            // 
+            // uiCheckColor
+            // 
+            this.uiCheckColor.AutoSize = true;
+            this.uiCheckColor.Location = new System.Drawing.Point(10, 19);
+            this.uiCheckColor.Name = "uiCheckColor";
+            this.uiCheckColor.Size = new System.Drawing.Size(83, 17);
+            this.uiCheckColor.TabIndex = 0;
+            this.uiCheckColor.Text = "Check color";
+            this.uiCheckColor.UseVisualStyleBackColor = true;
+            this.uiCheckColor.CheckedChanged += new System.EventHandler(this.uiCheckColor_CheckedChanged);
             // 
             // ShortcutForm
             // 
@@ -346,11 +369,11 @@
             this.groupBox3.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.uiCoordX)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiCoordY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiColorR)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.uiColorG)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.uiColorB)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorG)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiColorR)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uiCoordX)).EndInit();
             this.ResumeLayout(false);
 
         }

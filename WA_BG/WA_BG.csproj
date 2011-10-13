@@ -62,7 +62,7 @@
       <DependentUpon>ShortcutForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ShortcutItem.cs" />
-    <Compile Include="SimpleAutomator.cs" />
+    <Compile Include="KeypressAutomator.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -93,6 +93,10 @@
       <Project>{50565DE8-B1F8-4DA8-82AB-6CE3016D3ED2}</Project>
       <Name>WAutomator</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Death-Star.ico" />
+    <Content Include="R2D2.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

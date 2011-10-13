@@ -13,65 +13,38 @@ namespace WA_BG
     {
         private KeyEventArgs m_shortcut;
 
-        public KeyEventArgs Shortcut
+        public ShortcutItem Shortcut
         {
-            get { return m_shortcut; }
+            get
+            {
+                return new ShortcutItem()
+                {
+                    Shortcut = m_shortcut,
+                    Timeout = uiTimeout.Value,
+                    Comment = uiComment.Text,
+                    CheckColor = uiCheckColor.Checked,
+                    CoordX = Convert.ToInt32(uiCoordX.Value),
+                    CoordY = Convert.ToInt32(uiCoordY.Value),
+                    ColorR = uiColorR.Value,
+                    ColorG = uiColorG.Value,
+                    ColorB = uiColorB.Value,
+                };
+            }
             set
             {
-                if (null != value)
-                    textKey_KeyDown(this, value);
+                textKey_KeyDown(this, value.Shortcut);
+
+                uiTimeout.Value = value.Timeout;
+                uiComment.Text = value.Comment;
+                uiCheckColor.Checked = value.CheckColor;
+                uiCoordX.Value = value.CoordX;
+                uiCoordY.Value = value.CoordY;
+                uiColorR.Value = value.ColorR;
+                uiColorG.Value = value.ColorG;
+                uiColorB.Value = value.ColorB;
             }
         }
 
-        public double Timeout
-        {
-            get { return Convert.ToDouble(uiTimeout.Value); }
-            set { uiTimeout.Value = Convert.ToDecimal(value); }
-        }
-
-        public string Comment
-        {
-            get { return uiComment.Text; }
-            set { uiComment.Text = value; }
-        }
-
-        public bool CheckColor
-        {
-            get { return uiCheckColor.Checked; }
-            set { uiCheckColor.Checked = value; }
-        }
-
-        public decimal CoordX
-        {
-            get { return uiCoordX.Value; }
-            set { uiCoordX.Value = value; }
-        }
-
-        public decimal CoordY
-        {
-            get { return uiCoordY.Value; }
-            set { uiCoordY.Value = value; }
-        }
-
-        public decimal ColorR
-        {
-            get { return uiColorR.Value; }
-            set { uiColorR.Value = value; }
-        }
-
-        public decimal ColorG
-        {
-            get { return uiColorG.Value; }
-            set { uiColorG.Value = value; }
-        }
-
-        public decimal ColorB
-        {
-            get { return uiColorB.Value; }
-            set { uiColorB.Value = value; }
-        }
-
-       
         public ShortcutForm()
         {
             InitializeComponent();
@@ -98,6 +71,16 @@ namespace WA_BG
         {
             uiCoordX.Enabled = uiCoordY.Enabled =
                 uiColorR.Enabled = uiColorG.Enabled = uiColorB.Enabled = uiCheckColor.Checked;
+        }
+
+        private void PickColor()
+        {
+            //textMousePos.Text = string.Format("X: {0}, Y: {1}", Cursor.Position.X, Cursor.Position.Y);
+
+            //Color color = Automator.GetPixeColor(Cursor.Position.X, Cursor.Position.Y, m_WoW.MainWindowHandle);
+            //textColorUnderMouse.Text = string.Format("R: {0}, G: {1}, B: {2}", color.R, color.B, color.G);
+
+            //Automator.SendMouseLButtonClick(Cursor.Position.X, Cursor.Position.Y, m_WoW.MainWindowHandle);
         }
     }
 }

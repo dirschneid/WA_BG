@@ -12,49 +12,58 @@ namespace WA_BG
     public partial class MainForm : Form
     {
         private Process m_WoW;
+        private string m_profileFileName = @"default.profile";
 
-        private SimpleAutomator m_automator;
+        private KeypressAutomator m_automator;
+
+        private string FormTitle { get { return "World of Warcraft Automator - BG (Profile: " + m_profileFileName + ")"; } }
 
         // -----------------------------------
 
-        public MainForm(Process targetProcess)
+        public MainForm()
         {
             InitializeComponent();
 
-            m_WoW = targetProcess;
-
-            m_automator = new SimpleAutomator(
-                m_WoW,
+            m_automator = new KeypressAutomator(
                 delegate(string msg)
                 {
-                    listBox1.Items.Insert(0, msg);
-                    if (listBox1.Items.Count > 5000)
+                    listBox1.Items.Add(msg);
+                    if (listBox1.Items.Count > 1000)
                     {
-                        listBox1.Items.Clear();
+                        listBox1.Items.RemoveAt(0);
                     }
+
+                    listBox1.SelectedIndex = listBox1.Items.Count - 1;
+                    listBox1.SelectedIndex = -1;
                 });
 
-            LoadShortcuts();
+            LoadProfile();
         }
 
         private void btnRun_Click(object sender, EventArgs e)
         {
-            //textMousePos.Text = string.Format("X: {0}, Y: {1}", Cursor.Position.X, Cursor.Position.Y);
+            const string ProcessName = "WoW";
 
-            //Color color = Automator.GetPixeColor(Cursor.Position.X, Cursor.Position.Y, m_WoW.MainWindowHandle);
-            //textColorUnderMouse.Text = string.Format("R: {0}, G: {1}, B: {2}", color.R, color.B, color.G);
+            Process[] processes = Process.GetProcessesByName(ProcessName);
+            if (processes.Length == 0)
+            {
+                MessageBox.Show("Start process '" + ProcessName + "' please");
+                return;
+            }
 
-            //Automator.SendMouseLButtonClick(Cursor.Position.X, Cursor.Position.Y, m_WoW.MainWindowHandle);
-
+            m_automator.Interval = uiCheckInterval.Value;
             m_automator.Shortcuts = GetShortcuts();
-            m_automator.Start();
+            m_automator.Start(processes[0]);
 
-            uiRunButton.Enabled =
-                uiAddShortcutButton.Enabled =
-                uiRemoveShortcutButton.Enabled =
-                uiShortcuts.Enabled =
-                uiLoadButton.Enabled =
-                uiSaveButton.Enabled = false;
+            uiShortcuts.SelectedItems.Clear();
+
+            uiCheckInterval.Enabled =
+            uiShortcuts.Enabled =
+            uiAddShortcutButton.Enabled =
+            uiLoadButton.Enabled =
+            uiSaveButton.Enabled =
+            uiSaveAsButton.Enabled =
+            uiRunButton.Enabled = false;
 
             uiStopButton.Enabled = true;
         }
@@ -63,12 +72,13 @@ namespace WA_BG
         {
             m_automator.Stop();
 
-            uiRunButton.Enabled = 
-                uiAddShortcutButton.Enabled = 
-                uiRemoveShortcutButton.Enabled = 
-                uiShortcuts.Enabled =
-                uiLoadButton.Enabled =
-                uiSaveButton.Enabled = true;
+            uiCheckInterval.Enabled =
+            uiShortcuts.Enabled =
+            uiAddShortcutButton.Enabled =
+            uiLoadButton.Enabled =
+            uiSaveButton.Enabled =
+            uiSaveAsButton.Enabled =
+            uiRunButton.Enabled = true;
 
             uiStopButton.Enabled = false;
         }
@@ -78,13 +88,7 @@ namespace WA_BG
             ShortcutForm shortcutForm = new ShortcutForm();
             if (shortcutForm.ShowDialog() == DialogResult.OK)
             {
-                AddShortcut(new ShortcutItem()
-                {
-                    Shortcut = shortcutForm.Shortcut,
-                    Timeout = shortcutForm.Timeout,
-                    TimeLeft = shortcutForm.Timeout,
-                    Comment = shortcutForm.Comment
-                });
+                AddShortcut(shortcutForm.Shortcut);
             }
         }
 
@@ -94,48 +98,68 @@ namespace WA_BG
             {
                 uiShortcuts.Items.Remove(item);
             }
-        }
 
-        private void uiLoadButton_Click(object sender, EventArgs e)
-        {
-            LoadShortcuts();
-        }
-
-        private void uiSaveButton_Click(object sender, EventArgs e)
-        {
-            SaveShortcuts();
+            uiShortcuts.SelectedItems.Clear();
         }
 
         private void uiEditButton_Click(object sender, EventArgs e)
         {
             ShortcutForm shortcutForm = new ShortcutForm();
 
-            ShortcutItem si = (ShortcutItem)uiShortcuts.SelectedItems[0].Tag;
-            shortcutForm.Shortcut = si.Shortcut;
-            shortcutForm.Timeout = si.Timeout;
-            shortcutForm.Comment = si.Comment;
+            shortcutForm.Shortcut = (ShortcutItem)uiShortcuts.SelectedItems[0].Tag;
 
             if (shortcutForm.ShowDialog() == DialogResult.OK)
             {
-                si.Shortcut = shortcutForm.Shortcut;
-                si.Timeout = shortcutForm.Timeout;
-                si.Comment = shortcutForm.Comment;
+                var si = shortcutForm.Shortcut;
                 si.ResetTimeout();
 
-                uiShortcuts.SelectedItems[0].Tag = si;
-                uiShortcuts.SelectedItems[0].SubItems[0].Text = si.ShortcutText;
-                uiShortcuts.SelectedItems[0].SubItems[1].Text = si.Timeout.ToString();
-                uiShortcuts.SelectedItems[0].SubItems[2].Text = si.Comment;
+                SetListVievItemValue(uiShortcuts.SelectedItems[0], si);
             }
 
             uiShortcuts.SelectedItems.Clear();
         }
 
-        private void LoadShortcuts()
+        private void uiDuplicateButton_Click(object sender, EventArgs e)
+        {
+            foreach (ListViewItem item in uiShortcuts.SelectedItems)
+            {
+                AddShortcut((ShortcutItem)item.Tag);
+            }
+
+            uiShortcuts.SelectedItems.Clear();
+        }
+
+        private void uiLoadButton_Click(object sender, EventArgs e)
+        {
+            if (uiOpenProfileDialog.ShowDialog() == DialogResult.OK)
+            {
+                m_profileFileName = uiOpenProfileDialog.FileName;
+                LoadProfile();
+            }
+        }
+
+        private void uiSaveButton_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(m_profileFileName))
+                uiSaveAsButton_Click(sender, e);
+
+            SaveProfile();
+        }
+
+        private void uiSaveAsButton_Click(object sender, EventArgs e)
+        {
+            if (uiSaveProfileDialog.ShowDialog() == DialogResult.OK)
+            {
+                m_profileFileName = uiSaveProfileDialog.FileName;
+                SaveProfile();
+            }
+        }
+
+        private void LoadProfile()
         {
             try
             {
-                using (Stream profile = File.Open(@"default.profile", FileMode.Open))
+                using (Stream profile = File.Open(m_profileFileName, FileMode.Open))
                 {
                     //XmlSerializer xs = new XmlSerializer(typeof(ShortcutItem[]));
                     //ShortcutItem[] items = (ShortcutItem[])xs.Deserialize(profile);
@@ -149,23 +173,27 @@ namespace WA_BG
                         AddShortcut(items[i]);
                     }
                 }
+
+                base.Text = FormTitle;
             }
             catch
             {
             }
         }
 
-        private void SaveShortcuts()
+        private void SaveProfile()
         {
             try
             {
-                using (Stream profile = File.Open(@"default.profile", FileMode.Create))
+                using (Stream profile = File.Open(m_profileFileName, FileMode.Create))
                 {
                     //XmlSerializer xs = new XmlSerializer(typeof(ShortcutItem[]));
                     //xs.Serialize(profile, GetShortcuts());
                     IFormatter formatter = new BinaryFormatter();
                     formatter.Serialize(profile, GetShortcuts());
                 }
+
+                base.Text = FormTitle;
             }
             catch
             {
@@ -174,10 +202,21 @@ namespace WA_BG
 
         private void AddShortcut(ShortcutItem si)
         {
-            uiShortcuts.Items.Add(new ListViewItem(new string[] { si.ShortcutText, si.Timeout.ToString(), si.Comment })
-            {
-                Tag = si
-            });
+            string[] rowItems = new string[uiShortcuts.Columns.Count];
+
+            ListViewItem lvItem = new ListViewItem(rowItems);
+            SetListVievItemValue(lvItem, si);
+
+            uiShortcuts.Items.Add(lvItem);
+        }
+
+        private void SetListVievItemValue(ListViewItem lvItem, ShortcutItem si)
+        {
+            lvItem.Tag = si;
+            lvItem.SubItems[0].Text = si.ShortcutText;
+            lvItem.SubItems[1].Text = si.Timeout.ToString();
+            lvItem.SubItems[2].Text = si.ColorText;
+            lvItem.SubItems[3].Text = si.Comment;
         }
 
         private ShortcutItem[] GetShortcuts()
@@ -195,12 +234,13 @@ namespace WA_BG
         private void uiShortcuts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
             uiEditShortcutButton.Enabled = (uiShortcuts.SelectedItems.Count == 1);
-            uiRemoveShortcutButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
+            uiRemoveShortcutButton.Enabled =
+            uiDuplicateButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            SaveShortcuts();
+            SaveProfile();
         }
     }
 }

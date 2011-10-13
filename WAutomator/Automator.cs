@@ -50,15 +50,9 @@ namespace WAutomator
 
         // -----------------------------------
 
-        public DispatcherTimer Timer
-        {
-            get { return m_timer; }
-            set { m_timer = value; }
-        }
-
+        public DispatcherTimer Timer { get { return m_timer; } }
         protected Random Rand { get { return m_rand; } }
 
-        public bool IsEnabled { get { return null != Timer && m_timer.IsEnabled; } }
 
         protected int KeypressTimeout { get { return (int)Math.Ceiling(KEYPRESS_TIMEOUT + m_rand.NextDouble() * TICK_DELTA); } }
         protected double MasterTickOffset { get { return MASTER_TICK_OFFSET + m_rand.NextDouble() * TICK_DELTA; } }
@@ -66,25 +60,42 @@ namespace WAutomator
 
         // -----------------------------------
 
-        protected Automator(Process controlledProcess, Action<string> logAction = null)
+        protected Automator(Action<string> logAction = null)
         {
-            m_controlledProcess = controlledProcess;
-
             m_timer.Interval = TimeSpan.FromMilliseconds(MasterTickOffset);
             m_timer.Tick += new EventHandler(TickHandler);
 
             m_logAction = logAction;
         }
 
+        protected Automator(Process controlledProcess, Action<string> logAction = null)
+            : this(logAction)
+        {
+            m_controlledProcess = controlledProcess;
+        }
+
+        public virtual void Start(Process controlledProcess)
+        {
+            if (null == controlledProcess)
+                throw new ArgumentNullException("controlledProcess");
+
+            m_controlledProcess = controlledProcess;
+
+            Start();
+        }
+
         public virtual void Start()
         {
-            if (!IsEnabled)
+            if (null == m_controlledProcess)
+                throw new Exception("Controlled process not defined");
+
+            if (!m_timer.IsEnabled)
                 m_timer.Start();
         }
 
         public virtual void Stop()
         {
-            if (IsEnabled)
+            if (m_timer.IsEnabled)
                 m_timer.Stop();
         }
 
