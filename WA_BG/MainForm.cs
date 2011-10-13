@@ -11,7 +11,6 @@ namespace WA_BG
 {
     public partial class MainForm : Form
     {
-        private Process m_WoW;
         private string m_profileFileName = @"default.profile";
 
         private KeypressAutomator m_automator;
@@ -40,7 +39,7 @@ namespace WA_BG
             LoadProfile();
         }
 
-        private void btnRun_Click(object sender, EventArgs e)
+        private void uiRunButton_Click(object sender, EventArgs e)
         {
             const string ProcessName = "WoW";
 
@@ -68,7 +67,7 @@ namespace WA_BG
             uiStopButton.Enabled = true;
         }
 
-        private void btnStop_Click(object sender, EventArgs e)
+        private void uiStopButton_Click(object sender, EventArgs e)
         {
             m_automator.Stop();
 
@@ -102,7 +101,7 @@ namespace WA_BG
             uiShortcuts.SelectedItems.Clear();
         }
 
-        private void uiEditButton_Click(object sender, EventArgs e)
+        private void uiEditShortcutButton_Click(object sender, EventArgs e)
         {
             ShortcutForm shortcutForm = new ShortcutForm();
 
@@ -241,6 +240,15 @@ namespace WA_BG
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
             SaveProfile();
+        }
+
+        private void selectAllToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (uiShortcuts.MultiSelect)
+            {
+                foreach (ListViewItem item in uiShortcuts.Items)
+                    item.Selected = true;
+            }
         }
     }
 }
