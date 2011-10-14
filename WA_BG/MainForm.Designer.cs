@@ -33,7 +33,6 @@
             this.uiShortcuts = new System.Windows.Forms.ListView();
             this.columnHeaderShortcut = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderTimeout = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeaderColor = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeaderComment = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -71,7 +70,7 @@
             this.searchToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.uiMainToolbar = new System.Windows.Forms.ToolStrip();
             this.uiNewTSButton = new System.Windows.Forms.ToolStripButton();
             this.uiOpenTSButton = new System.Windows.Forms.ToolStripButton();
             this.uiSaveTSButton = new System.Windows.Forms.ToolStripButton();
@@ -91,8 +90,13 @@
             this.uiRunTSButton = new System.Windows.Forms.ToolStripButton();
             this.uiStopTSButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator8 = new System.Windows.Forms.ToolStripSeparator();
+            this.columnHeaderX = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderY = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderR = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderG = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeaderB = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.uiMainMenu.SuspendLayout();
-            this.toolStrip1.SuspendLayout();
+            this.uiMainToolbar.SuspendLayout();
             this.SuspendLayout();
             // 
             // uiKeypressLog
@@ -113,7 +117,11 @@
             this.uiShortcuts.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeaderShortcut,
             this.columnHeaderTimeout,
-            this.columnHeaderColor,
+            this.columnHeaderX,
+            this.columnHeaderY,
+            this.columnHeaderR,
+            this.columnHeaderG,
+            this.columnHeaderB,
             this.columnHeaderComment});
             this.uiShortcuts.FullRowSelect = true;
             this.uiShortcuts.GridLines = true;
@@ -129,24 +137,19 @@
             // columnHeaderShortcut
             // 
             this.columnHeaderShortcut.Text = "Shortcut";
-            this.columnHeaderShortcut.Width = 110;
+            this.columnHeaderShortcut.Width = 100;
             // 
             // columnHeaderTimeout
             // 
             this.columnHeaderTimeout.Text = "Timeout";
             this.columnHeaderTimeout.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // columnHeaderColor
-            // 
-            this.columnHeaderColor.Text = "Color";
-            this.columnHeaderColor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeaderColor.Width = 200;
+            this.columnHeaderTimeout.Width = 50;
             // 
             // columnHeaderComment
             // 
             this.columnHeaderComment.Text = "Comment";
             this.columnHeaderComment.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.columnHeaderComment.Width = 170;
+            this.columnHeaderComment.Width = 175;
             // 
             // label1
             // 
@@ -460,10 +463,10 @@
             this.aboutToolStripMenuItem.Text = "&About...";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
-            // toolStrip1
+            // uiMainToolbar
             // 
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.uiMainToolbar.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.uiMainToolbar.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.uiNewTSButton,
             this.uiOpenTSButton,
             this.uiSaveTSButton,
@@ -483,11 +486,11 @@
             this.uiStopTSButton,
             this.toolStripSeparator8,
             this.helpToolStripButton});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 24);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(844, 25);
-            this.toolStrip1.TabIndex = 17;
-            this.toolStrip1.Text = "uiMainToolStrip";
+            this.uiMainToolbar.Location = new System.Drawing.Point(0, 24);
+            this.uiMainToolbar.Name = "uiMainToolbar";
+            this.uiMainToolbar.Size = new System.Drawing.Size(844, 25);
+            this.uiMainToolbar.TabIndex = 17;
+            this.uiMainToolbar.Text = "uiMainToolbar";
             // 
             // uiNewTSButton
             // 
@@ -665,12 +668,42 @@
             this.toolStripSeparator8.Name = "toolStripSeparator8";
             this.toolStripSeparator8.Size = new System.Drawing.Size(6, 25);
             // 
+            // columnHeaderX
+            // 
+            this.columnHeaderX.Text = "X";
+            this.columnHeaderX.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderX.Width = 30;
+            // 
+            // columnHeaderY
+            // 
+            this.columnHeaderY.Text = "Y";
+            this.columnHeaderY.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderY.Width = 30;
+            // 
+            // columnHeaderR
+            // 
+            this.columnHeaderR.Text = "R";
+            this.columnHeaderR.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderR.Width = 50;
+            // 
+            // columnHeaderG
+            // 
+            this.columnHeaderG.Text = "G";
+            this.columnHeaderG.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderG.Width = 50;
+            // 
+            // columnHeaderB
+            // 
+            this.columnHeaderB.Text = "B";
+            this.columnHeaderB.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.columnHeaderB.Width = 50;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(844, 479);
-            this.Controls.Add(this.toolStrip1);
+            this.Controls.Add(this.uiMainToolbar);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.uiShortcuts);
@@ -684,8 +717,8 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainForm_FormClosing);
             this.uiMainMenu.ResumeLayout(false);
             this.uiMainMenu.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
+            this.uiMainToolbar.ResumeLayout(false);
+            this.uiMainToolbar.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -700,7 +733,6 @@
         private System.Windows.Forms.ColumnHeader columnHeaderShortcut;
         private System.Windows.Forms.ColumnHeader columnHeaderTimeout;
         private System.Windows.Forms.ColumnHeader columnHeaderComment;
-        private System.Windows.Forms.ColumnHeader columnHeaderColor;
         private System.Windows.Forms.OpenFileDialog uiOpenProfileDialog;
         private System.Windows.Forms.SaveFileDialog uiSaveProfileDialog;
         private System.Windows.Forms.MenuStrip uiMainMenu;
@@ -735,7 +767,7 @@
         private System.Windows.Forms.ToolStripMenuItem addShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeShortcutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem editShortcutToolStripMenuItem;
-		private System.Windows.Forms.ToolStrip toolStrip1;
+		private System.Windows.Forms.ToolStrip uiMainToolbar;
 		private System.Windows.Forms.ToolStripButton uiNewTSButton;
 		private System.Windows.Forms.ToolStripButton uiOpenTSButton;
 		private System.Windows.Forms.ToolStripButton uiSaveTSButton;
@@ -755,6 +787,11 @@
         private System.Windows.Forms.ToolStripButton uiRunTSButton;
         private System.Windows.Forms.ToolStripButton uiStopTSButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator8;
+        private System.Windows.Forms.ColumnHeader columnHeaderX;
+        private System.Windows.Forms.ColumnHeader columnHeaderY;
+        private System.Windows.Forms.ColumnHeader columnHeaderR;
+        private System.Windows.Forms.ColumnHeader columnHeaderG;
+        private System.Windows.Forms.ColumnHeader columnHeaderB;
     }
 }
 

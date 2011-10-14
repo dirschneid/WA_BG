@@ -216,8 +216,12 @@ namespace WA_BG
             lvItem.Tag = si;
             lvItem.SubItems[0].Text = si.ShortcutText;
             lvItem.SubItems[1].Text = si.Timeout.ToString();
-            lvItem.SubItems[2].Text = si.ColorText;
-            lvItem.SubItems[3].Text = si.Comment;
+            lvItem.SubItems[2].Text = si.TextX;
+            lvItem.SubItems[3].Text = si.TextY;
+            lvItem.SubItems[4].Text = si.TextR;
+            lvItem.SubItems[5].Text = si.TextG;
+            lvItem.SubItems[6].Text = si.TextB;
+            lvItem.SubItems[7].Text = si.Comment;
         }
 
         private ShortcutItem[] GetShortcuts()

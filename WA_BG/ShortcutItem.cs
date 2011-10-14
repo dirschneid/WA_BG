@@ -31,11 +31,11 @@ namespace WA_BG
 
         public KeyEventArgs Shortcut { get { return new KeyEventArgs(Key); } set { Key = (null == value) ? Keys.None : value.KeyData; } }
         public string ShortcutText { get { return ColorAndKeyPair.FormatKey(Shortcut); } }
-        public string ColorText { get {
-            return CheckColor
-                ? string.Format("R:{0}, G:{1}, B:{2} @ X:{3} Y:{4}", ColorR, ColorG, ColorB, CoordX, CoordY)
-                : "Not cheked";
-        } }
+        public string TextX { get { return CheckColor ? CoordX.ToString() : "N/A"; } }
+        public string TextY { get { return CheckColor ? CoordY.ToString() : "N/A"; } }
+        public string TextR { get { return CheckColor ? ColorR.ToString() : "N/A"; } }
+        public string TextG { get { return CheckColor ? ColorG.ToString() : "N/A"; } }
+        public string TextB { get { return CheckColor ? ColorB.ToString() : "N/A"; } }
 
         public ShortcutItem()
         { 
