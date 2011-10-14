@@ -60,13 +60,13 @@ namespace WA_BG
 
             optionsToolStripMenuItem.Enabled =
             uiShortcuts.Enabled =
-            uiAddShortcutButton.Enabled = addShortcutToolStripMenuItem.Enabled =
-            uiLoadButton.Enabled = openToolStripMenuItem.Enabled =
-            uiSaveButton.Enabled = saveToolStripMenuItem.Enabled =
-            uiSaveAsButton.Enabled = saveAsToolStripMenuItem.Enabled =
-            uiRunButton.Enabled = runToolStripMenuItem.Enabled = false;
+            uiAddTSButton.Enabled = addShortcutToolStripMenuItem.Enabled =
+            uiOpenTSButton.Enabled = openToolStripMenuItem.Enabled =
+            uiSaveTSButton.Enabled = saveToolStripMenuItem.Enabled =
+            uiSaveAsTSButton.Enabled = saveAsToolStripMenuItem.Enabled =
+            uiRunTSButton.Enabled = runToolStripMenuItem.Enabled = false;
 
-            uiStopButton.Enabled = stopToolStripMenuItem.Enabled = true;
+            uiStopTSButton.Enabled = stopToolStripMenuItem.Enabled = true;
         }
 
         private void uiStopButton_Click(object sender, EventArgs e)
@@ -75,13 +75,13 @@ namespace WA_BG
 
 			optionsToolStripMenuItem.Enabled =
 			uiShortcuts.Enabled =
-			uiAddShortcutButton.Enabled = addShortcutToolStripMenuItem.Enabled =
-			uiLoadButton.Enabled = openToolStripMenuItem.Enabled =
-			uiSaveButton.Enabled = saveToolStripMenuItem.Enabled =
-			uiSaveAsButton.Enabled = saveAsToolStripMenuItem.Enabled =
-			uiRunButton.Enabled = runToolStripMenuItem.Enabled = true;
+			uiAddTSButton.Enabled = addShortcutToolStripMenuItem.Enabled =
+			uiOpenTSButton.Enabled = openToolStripMenuItem.Enabled =
+			uiSaveTSButton.Enabled = saveToolStripMenuItem.Enabled =
+			uiSaveAsTSButton.Enabled = saveAsToolStripMenuItem.Enabled =
+			uiRunTSButton.Enabled = runToolStripMenuItem.Enabled = true;
 
-			uiStopButton.Enabled = stopToolStripMenuItem.Enabled = false;
+			uiStopTSButton.Enabled = stopToolStripMenuItem.Enabled = false;
         }
 
         private void uiAddShortcutButton_Click(object sender, EventArgs e)
@@ -234,9 +234,9 @@ namespace WA_BG
 
         private void uiShortcuts_ItemSelectionChanged(object sender, ListViewItemSelectionChangedEventArgs e)
         {
-            uiEditShortcutButton.Enabled = (uiShortcuts.SelectedItems.Count == 1);
-            uiRemoveShortcutButton.Enabled =
-            duplicateToolStripButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
+            uiEditTSButton.Enabled = (uiShortcuts.SelectedItems.Count == 1);
+            uiRemoveTSButton.Enabled =
+            uiDuplicateTSButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
