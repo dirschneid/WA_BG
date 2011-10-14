@@ -5,6 +5,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WA_BG", "WA_BG\WA_BG.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WAutomator", "WAutomator\WAutomator.csproj", "{50565DE8-B1F8-4DA8-82AB-6CE3016D3ED2}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LuaObfuscator", "LuaObfuscator\LuaObfuscator.csproj", "{E3A418AD-1D01-4076-9B3E-FB763072B4BA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,16 @@ Global
 		{50565DE8-B1F8-4DA8-82AB-6CE3016D3ED2}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{50565DE8-B1F8-4DA8-82AB-6CE3016D3ED2}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{50565DE8-B1F8-4DA8-82AB-6CE3016D3ED2}.Release|x86.ActiveCfg = Release|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{E3A418AD-1D01-4076-9B3E-FB763072B4BA}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

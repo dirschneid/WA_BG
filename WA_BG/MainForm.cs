@@ -6,6 +6,7 @@ using System.Xml.Serialization;
 using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
+using WA_BG.Properties;
 
 namespace WA_BG
 {
@@ -17,6 +18,7 @@ namespace WA_BG
 
         private string FormTitle { get { return "World of Warcraft Automator - BG (Profile: " + m_profileFileName + ")"; } }
 
+
         // -----------------------------------
 
         public MainForm()
@@ -26,14 +28,14 @@ namespace WA_BG
             m_automator = new KeypressAutomator(
                 delegate(string msg)
                 {
-                    listBox1.Items.Add(msg);
-                    if (listBox1.Items.Count > 1000)
+                    uiKeypressLog.Items.Add(msg);
+                    if (uiKeypressLog.Items.Count > 1000)
                     {
-                        listBox1.Items.RemoveAt(0);
+                        uiKeypressLog.Items.RemoveAt(0);
                     }
 
-                    listBox1.SelectedIndex = listBox1.Items.Count - 1;
-                    listBox1.SelectedIndex = -1;
+                    uiKeypressLog.SelectedIndex = uiKeypressLog.Items.Count - 1;
+                    uiKeypressLog.SelectedIndex = -1;
                 });
 
             LoadProfile();
@@ -50,36 +52,36 @@ namespace WA_BG
                 return;
             }
 
-            m_automator.Interval = uiCheckInterval.Value;
+			m_automator.Interval = Settings.Default.CheckInterval;
             m_automator.Shortcuts = GetShortcuts();
             m_automator.Start(processes[0]);
 
             uiShortcuts.SelectedItems.Clear();
 
-            uiCheckInterval.Enabled =
+            optionsToolStripMenuItem.Enabled =
             uiShortcuts.Enabled =
-            uiAddShortcutButton.Enabled =
-            uiLoadButton.Enabled =
-            uiSaveButton.Enabled =
-            uiSaveAsButton.Enabled =
-            uiRunButton.Enabled = false;
+            uiAddShortcutButton.Enabled = addShortcutToolStripMenuItem.Enabled =
+            uiLoadButton.Enabled = openToolStripMenuItem.Enabled =
+            uiSaveButton.Enabled = saveToolStripMenuItem.Enabled =
+            uiSaveAsButton.Enabled = saveAsToolStripMenuItem.Enabled =
+            uiRunButton.Enabled = runToolStripMenuItem.Enabled = false;
 
-            uiStopButton.Enabled = true;
+            uiStopButton.Enabled = stopToolStripMenuItem.Enabled = true;
         }
 
         private void uiStopButton_Click(object sender, EventArgs e)
         {
             m_automator.Stop();
 
-            uiCheckInterval.Enabled =
-            uiShortcuts.Enabled =
-            uiAddShortcutButton.Enabled =
-            uiLoadButton.Enabled =
-            uiSaveButton.Enabled =
-            uiSaveAsButton.Enabled =
-            uiRunButton.Enabled = true;
+			optionsToolStripMenuItem.Enabled =
+			uiShortcuts.Enabled =
+			uiAddShortcutButton.Enabled = addShortcutToolStripMenuItem.Enabled =
+			uiLoadButton.Enabled = openToolStripMenuItem.Enabled =
+			uiSaveButton.Enabled = saveToolStripMenuItem.Enabled =
+			uiSaveAsButton.Enabled = saveAsToolStripMenuItem.Enabled =
+			uiRunButton.Enabled = runToolStripMenuItem.Enabled = true;
 
-            uiStopButton.Enabled = false;
+			uiStopButton.Enabled = stopToolStripMenuItem.Enabled = false;
         }
 
         private void uiAddShortcutButton_Click(object sender, EventArgs e)
@@ -234,11 +236,12 @@ namespace WA_BG
         {
             uiEditShortcutButton.Enabled = (uiShortcuts.SelectedItems.Count == 1);
             uiRemoveShortcutButton.Enabled =
-            uiDuplicateButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
+            duplicateToolStripButton.Enabled = (uiShortcuts.SelectedItems.Count > 0);
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
+			Settings.Default.Save();
             SaveProfile();
         }
 
@@ -250,5 +253,15 @@ namespace WA_BG
                     item.Selected = true;
             }
         }
+
+		private void optionsToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			new OptionsForm().ShowDialog();
+		}
+
+		private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+		{
+			MessageBox.Show("А вот хрен вам, а не About!", "About", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+		}
     }
 }

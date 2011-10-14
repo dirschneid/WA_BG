@@ -1,0 +1,7 @@
+S:\WA_BG\LuaObfuscator\obj\Debug\ResolveAssemblyReference.cache
+S:\WA_BG\LuaObfuscator\bin\Debug\LuaObfuscator.dll
+S:\WA_BG\LuaObfuscator\bin\Debug\LuaObfuscator.pdb
+S:\WA_BG\LuaObfuscator\bin\Debug\Antlr3.Runtime.dll
+S:\WA_BG\LuaObfuscator\bin\Debug\Antlr3.Runtime.pdb
+S:\WA_BG\LuaObfuscator\obj\Debug\LuaObfuscator.dll
+S:\WA_BG\LuaObfuscator\obj\Debug\LuaObfuscator.pdb
