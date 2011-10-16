@@ -1,5 +1,0 @@
-s:\WA_BG\WAutomator\obj\Debug\ResolveAssemblyReference.cache
-s:\WA_BG\WAutomator\bin\Debug\WAutomator.dll
-s:\WA_BG\WAutomator\bin\Debug\WAutomator.pdb
-s:\WA_BG\WAutomator\obj\Debug\WAutomator.dll
-s:\WA_BG\WAutomator\obj\Debug\WAutomator.pdb
