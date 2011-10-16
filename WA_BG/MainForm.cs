@@ -16,8 +16,6 @@ namespace WA_BG
 
         private KeypressAutomator m_automator;
 
-        private string FormTitle { get { return "World of Warcraft Automator - BG (Profile: " + m_profileFileName + ")"; } }
-
 
         // -----------------------------------
 
@@ -63,7 +61,7 @@ namespace WA_BG
             uiAddTSButton.Enabled = addShortcutToolStripMenuItem.Enabled =
             uiOpenTSButton.Enabled = openToolStripMenuItem.Enabled =
             uiSaveTSButton.Enabled = saveToolStripMenuItem.Enabled =
-            uiSaveAsTSButton.Enabled = saveAsToolStripMenuItem.Enabled =
+            saveAsToolStripMenuItem.Enabled =
             uiRunTSButton.Enabled = runToolStripMenuItem.Enabled = false;
 
             uiStopTSButton.Enabled = stopToolStripMenuItem.Enabled = true;
@@ -78,7 +76,7 @@ namespace WA_BG
 			uiAddTSButton.Enabled = addShortcutToolStripMenuItem.Enabled =
 			uiOpenTSButton.Enabled = openToolStripMenuItem.Enabled =
 			uiSaveTSButton.Enabled = saveToolStripMenuItem.Enabled =
-			uiSaveAsTSButton.Enabled = saveAsToolStripMenuItem.Enabled =
+			saveAsToolStripMenuItem.Enabled =
 			uiRunTSButton.Enabled = runToolStripMenuItem.Enabled = true;
 
 			uiStopTSButton.Enabled = stopToolStripMenuItem.Enabled = false;
@@ -175,7 +173,7 @@ namespace WA_BG
                     }
                 }
 
-                base.Text = FormTitle;
+                uiProfileTSStatusLabel.Text = m_profileFileName;
             }
             catch
             {
@@ -194,7 +192,7 @@ namespace WA_BG
                     formatter.Serialize(profile, GetShortcuts());
                 }
 
-                base.Text = FormTitle;
+                uiProfileTSStatusLabel.Text = m_profileFileName;
             }
             catch
             {
